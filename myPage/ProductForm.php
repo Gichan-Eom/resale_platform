@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../dbConnection.php';
+$nickname = $_SESSION['ses_nickname'] ?? '';
 
 // 로그인 확인
 if (!isset($_SESSION['ses_userid'])) {
@@ -76,9 +77,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   width: 100%;
   font-family: inherit;
 }
+.my-header {
+          display: flex;
+          justify-content: flex-end;
+          padding: 10px;
+          background-color: #f9f9f9;
+}
+.my-btn {
+          margin-left: 10px;
+          padding: 5px 10px;
+          background: #000;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          text-decoration: none;
+          font-size: 14px;
+        }
   </style>
 </head>
 <body>
+  <div class="my-header">
+    <button class="my-btn" onclick="location.href='../main.php'">메인</button>
+    <button class="my-btn" onclick="location.href='../chatPage/chatroom.php'">채팅</button>
+    <button class="my-btn" onclick="location.href='../MyPage/ProfilePage.php'">
+    <?=htmlspecialchars($nickname, ENT_QUOTES, 'UTF-8')?></button>
+    <button class="my-btn" onclick="location.href='../loginPage/logout.php'">로그아웃</button>
+  </div>
   <form action="ProductForm.php" method="POST" enctype="multipart/form-data">
     <div class="product-form-container">
       <div class="img-upload-box">

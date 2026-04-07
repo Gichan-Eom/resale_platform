@@ -217,7 +217,7 @@ function confirmDelete(chatRoomId) {
 }
 
 <?php if ($chatRoomId): ?>
-const ws = new WebSocket('ws://18.205.105.72:8080');
+const ws = new WebSocket('ws://35.172.111.23:8080');
 ws.onopen = () => {
     ws.send(JSON.stringify({
         type: 'join',

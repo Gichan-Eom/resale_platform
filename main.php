@@ -162,7 +162,7 @@ oci_close($conn);
     .header { display:flex; justify-content:flex-end; padding:10px; background:#000; }
     .header .btn { margin-left:10px; padding:5px 10px; background:#fff; color:#000; border:none; border-radius:5px; cursor:pointer; text-decoration:none; }
     .header .nickname { margin-left:10px; padding:5px 10px; color:#fff; }
-    .title { text-align:center; margin:30px 0 10px; font-size:24px; font-weight:bold; }
+    .title { text-align:center; margin:30px 0 10px; font-size:24px; font-weight:bold;  cursor: pointer;}
     .search-bar { display:flex; flex-direction:column; align-items:center; margin:30px 0; }
     .search-bar input { width:500px; padding:12px; font-size:18px; border-radius:10px; border:1px solid #aaa; }
     .search-bar div { margin-top:10px; }
@@ -205,7 +205,7 @@ oci_close($conn);
   <?php endif; ?>
 </div>
 
-<div class="title">🍅토마토 마켓🍅</div>
+<div class="title" onclick="location.href='main.php'">🍅토마토 마켓🍅</div>
 
 <form method="GET" class="search-bar">
   <input

@@ -65,7 +65,7 @@ oci_close($conn);
     .right-buttons button,
     .right-buttons span { margin-left:5px; background:#222; color:#fff; border:none; padding:4px 10px; border-radius:10px; cursor:pointer; font-size:12px; }
     .right-buttons .nickname { background:transparent; color:#fff; cursor:default; }
-    .title { text-align:center; margin:20px 0 10px; font-size:24px; font-weight:bold; color:#222; }
+    .title { text-align:center; margin:20px 0 10px; font-size:24px; font-weight:bold; color:#222; cursor: pointer;}
     /* .search-bar { display:flex; justify-content:center; margin-bottom:20px; }
     .search-bar input[type="text"] {
       width:400px; padding:12px 15px; border:1px solid #aaa; border-radius:18px; font-size:16px; box-sizing:border-box;
@@ -117,7 +117,7 @@ oci_close($conn);
   </div>
 </div>
 
-<div class="title">🍅 토마토 마켓 🍅</div>
+<div class="title" onclick="location.href='main.php'">🍅토마토 마켓🍅</div>
 
 <!-- <form class="search-bar" method="get" action="search.php">
   <input type="text" name="query" placeholder="검색어를 입력하세요">

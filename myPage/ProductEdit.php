@@ -1,13 +1,13 @@
 <?php
 session_start();
 require_once '../dbConnection.php';
-
 // 로그인 확인
 if (!isset($_SESSION['ses_userid'])) {
   die("로그인이 필요합니다.");
 }
 
 $userId = $_SESSION['ses_userid'];
+$nickname = $_SESSION['ses_nickname'] ?? '';
 
 // 상품 ID 받기 (GET)
 if (!isset($_GET['good_id'])) {
@@ -116,9 +116,33 @@ if ($product['GOOD_IMAGE'] !== null) {
   width: 100%;
   font-family: inherit;
 }
+.my-header {
+          display: flex;
+          justify-content: flex-end;
+          padding: 10px;
+          background-color: #f9f9f9;
+}
+.my-btn {
+          margin-left: 10px;
+          padding: 5px 10px;
+          background: #000;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          text-decoration: none;
+          font-size: 14px;
+        }
   </style>
 </head>
 <body>
+  <div class="my-header">
+    <button class="my-btn" onclick="location.href='../main.php'">메인</button>
+    <button class="my-btn" onclick="location.href='../chatPage/chatroom.php'">채팅</button>
+    <button class="my-btn" onclick="location.href='../MyPage/ProfilePage.php'">
+    <?=htmlspecialchars($nickname, ENT_QUOTES, 'UTF-8')?></button>
+    <button class="my-btn" onclick="location.href='../loginPage/logout.php'">로그아웃</button>
+  </div>
   <form action="ProductEdit.php?good_id=<?= htmlspecialchars($goodId) ?>" method="POST" enctype="multipart/form-data">
     <div class="product-form-container">
       <div class="img-upload-box">
@@ -159,8 +183,8 @@ if ($product['GOOD_IMAGE'] !== null) {
       <select name="status" class="product-status"required>
   <option value="">상태 선택</option>
   <option value="판매 중" <?= (isset($product['GOOD_STATUS']) && $product['GOOD_STATUS'] === '판매 중') ? 'selected' : '' ?>>판매 중</option>
-  <option value="판매완료" <?= (isset($product['GOOD_STATUS']) && $product['GOOD_STATUS'] === '판매 중지') ? 'selected' : '' ?>>판매 중지</option>
-  <option value="판매완료" <?= (isset($product['GOOD_STATUS']) && $product['GOOD_STATUS'] === '판매 완료') ? 'selected' : '' ?>>판매 완료</option>
+  <option value="판매 중지" <?= (isset($product['GOOD_STATUS']) && $product['GOOD_STATUS'] === '판매 중지') ? 'selected' : '' ?>>판매 중지</option>
+  <option value="판매 완료" <?= (isset($product['GOOD_STATUS']) && $product['GOOD_STATUS'] === '판매 완료') ? 'selected' : '' ?>>판매 완료</option>
 </select>
       <input
         type="text"

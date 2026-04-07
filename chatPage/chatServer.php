@@ -44,9 +44,6 @@ class Chat implements MessageComponentInterface {
 
             echo "[Room $roomId] {$fromName}: {$message}\n";
 
-            // // DB 저장 로직 (추후 구현 가능)
-            // $this->saveMessageToDB($fromName, $roomId, $message);
-
             if (isset($this->chatRooms[$roomId])) {
                 foreach ($this->chatRooms[$roomId] as $client) {
                     $client->send(json_encode([
